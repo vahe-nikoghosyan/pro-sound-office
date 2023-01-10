@@ -1,0 +1,74 @@
+.menuNavAppbar {
+  background: #262626;
+  padding: 30px 20px;
+  color: aliceblue;
+  width: 400px;
+
+  &SearchParent {
+
+    & > p {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      color: white;
+      font-size: 16px;
+    }
+
+    & > div {
+      width: 100%;
+      border: 1px solid #777777;
+      margin: 10px 0 20px 0;
+      border-radius: 2px;
+
+      & > input {
+        color: white;
+        padding: 10px 20px;
+      }
+    }
+  }
+
+  &ButtonParent {
+    margin-bottom: 20px;
+
+    & > button:nth-child(1) {
+      background-color: #414141;
+      color: #e7a13a;
+      padding: 10px 35px;
+      border-radius: 0;
+      width: 50%;
+      margin-right: 0;
+    }
+
+    & > button:nth-child(2) {
+      padding: 10px 35px;
+      width: 50%;
+      color: #777777;
+      text-transform: capitalize;
+    }
+  }
+
+  &SubCategoriesParent {
+    & > div {
+      margin-left: 0;
+      width: 100%;
+
+      & > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 4px !important;
+
+        cursor: pointer;
+
+        &:hover {
+          background-color: #414141;
+          color: #e7a13a;
+        }
+      }
+
+      :nth-child(odd) {
+        border-right: 2px solid black;
+      }
+    }
+  }
+}

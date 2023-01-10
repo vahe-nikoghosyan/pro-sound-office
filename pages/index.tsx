@@ -10,7 +10,7 @@ import HomeBlog from "../components/Home/HomeBlog";
 import JoinCommunity from "../components/Home/JoinCommunity";
 import HomeCheckBlog from "../components/Home/HomeCheckBlog";
 
-export default function Home(props: any) {
+function Home(props: any) {
   console.log("home", props);
   return (
     <Box>
@@ -34,3 +34,5 @@ export async function getStaticProps() {
     },
   };
 }
+
+export default Home;
