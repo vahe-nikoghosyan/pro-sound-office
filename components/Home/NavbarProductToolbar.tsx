@@ -21,7 +21,10 @@ import styles from "../../styles/Navbar.module.scss";
 
 export default function NavbarProductToolbar({ title }: any) {
   const [searchValue, setSearchValue] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<{name: string, title?: string} | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<{
+    name: string;
+    title?: string;
+  } | null>(null);
   const [subCategories, setSubCategories] = useState<ProductCategory[] | null>(
     null
   );
@@ -36,6 +39,23 @@ export default function NavbarProductToolbar({ title }: any) {
       setSubCategories(found?.subcategories || []);
     }
   }, [selectedCategory]);
+
+  useEffect(() => {
+    if (searchValue && searchValue.length > 0) {
+      const allCategories = productData.categories.map((c) => {
+        return c.subcategories?.map((sc) => {
+          return sc;
+        });
+      });
+      if (allCategories != null) {
+        setSubCategories(
+          allCategories.flat().filter(Boolean) as ProductCategory[]
+        );
+      }
+    } else {
+      setSubCategories(null);
+    }
+  }, [searchValue]);
 
   const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -52,7 +72,10 @@ export default function NavbarProductToolbar({ title }: any) {
     setAnchorElUser(null);
   };
   return (
-    <Box sx={{ display: "inline-block" }} className={styles.menuNavAppbarContainer}>
+    <Box
+      sx={{ display: "inline-block" }}
+      className={styles.menuNavAppbarContainer}
+    >
       <Tooltip title="Products menu">
         <Button
           onClick={handleOpenUserMenu}
@@ -79,33 +102,40 @@ export default function NavbarProductToolbar({ title }: any) {
         onClose={handleCloseUserMenu}
       >
         <Box className={styles.menuNavAppbar}>
-          <FormControl
-            sx={{ width: "100%" }}
-            className={styles.menuNavAppbarSearchParent}
-          >
-            <Typography
-              sx={{
-                color: "white",
-                fontSize: "18px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
+          {selectedCategory == null && (
+            <FormControl
+              sx={{ width: "100%" }}
+              className={styles.menuNavAppbarSearchParent}
             >
-              <SearchIcon />
-              &nbsp;Search
-            </Typography>
-            <InputBase
-              sx={{ ml: 1, flex: 1 }}
-              placeholder="Product"
-              inputProps={{ "aria-label": "product" }}
-              onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                setSearchValue(event.target.value);
-              }}
-            />
-          </FormControl>
+              <Typography
+                sx={{
+                  color: "white",
+                  fontSize: "18px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <SearchIcon />
+                &nbsp;Search
+              </Typography>
+              <InputBase
+                sx={{ ml: 1, flex: 1 }}
+                placeholder="Product"
+                inputProps={{ "aria-label": "product" }}
+                onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                  setSearchValue(event.target.value);
+                }}
+              />
+            </FormControl>
+          )}
 
-          <Box component="div" className={styles.menuNavAppbarButtonParent}>
+          <Box
+            component="div"
+            className={`${styles.menuNavAppbarButtonParent} ${
+              selectedCategory != null && styles.activeBtn
+            }`}
+          >
             {selectedCategory == null ? (
               <>
                 <Button
@@ -113,8 +143,13 @@ export default function NavbarProductToolbar({ title }: any) {
                     event.preventDefault();
 
                     const button: HTMLButtonElement = event.currentTarget;
-                    const found = productData.categories.find(({id}) => id === button.name)
-                    setSelectedCategory({ name: button.name, title: found?.title });
+                    const found = productData.categories.find(
+                      ({ id }) => id === button.name
+                    );
+                    setSelectedCategory({
+                      name: button.name,
+                      title: found?.title,
+                    });
                   }}
                   name="funktion"
                 >
@@ -125,8 +160,13 @@ export default function NavbarProductToolbar({ title }: any) {
                     event.preventDefault();
 
                     const button: HTMLButtonElement = event.currentTarget;
-                    const found = productData.categories.find(({id}) => id === button.name)
-                    setSelectedCategory({ name: button.name, title: found?.title });
+                    const found = productData.categories.find(
+                      ({ id }) => id === button.name
+                    );
+                    setSelectedCategory({
+                      name: button.name,
+                      title: found?.title,
+                    });
                   }}
                   name="other"
                 >
@@ -135,6 +175,7 @@ export default function NavbarProductToolbar({ title }: any) {
               </>
             ) : (
               <Button
+                className={styles.clickedBtn}
                 onClick={(event: MouseEvent<HTMLButtonElement>) => {
                   event.preventDefault();
                   setSelectedCategory(null);

@@ -28,7 +28,7 @@
   }
 
   &ButtonParent {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 
     & > button:nth-child(1) {
       background-color: #414141;
@@ -71,4 +71,13 @@
       }
     }
   }
+}
+
+.clickedBtn {
+  background-color: transparent !important;
+  color: white !important;
+}
+
+.activeBtn {
+  border-bottom: 2px solid black;
 }
