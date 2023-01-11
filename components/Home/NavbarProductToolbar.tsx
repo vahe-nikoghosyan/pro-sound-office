@@ -1,23 +1,21 @@
+import { useState, useEffect, ChangeEvent, MouseEvent } from "react";
 import Box from "@mui/material/Box";
-import {
-  FormControl,
-  Grid,
-  InputBase,
-  InputLabel,
-  Menu,
-  Tooltip,
-  Button,
-  Typography,
-} from "@mui/material";
+import FormControl from "@mui/material/FormControl";
+import Grid from "@mui/material/Grid";
+import InputBase from "@mui/material/InputBase";
+import Menu from "@mui/material/Menu";
+import Tooltip from "@mui/material/Tooltip";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import SearchIcon from "@mui/icons-material/Search";
 
-import { useState, useEffect, ChangeEvent, MouseEvent } from "react";
 import { ProductCategory, productData } from "../../pages/products";
 
 import styles from "../../styles/Navbar.module.scss";
+import Link from "../../utils/Link";
 
 export default function NavbarProductToolbar({ title }: any) {
   const [searchValue, setSearchValue] = useState("");
@@ -57,20 +55,14 @@ export default function NavbarProductToolbar({ title }: any) {
     }
   }, [searchValue]);
 
-  const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
   const handleOpenUserMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
   };
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
   return (
     <Box
       sx={{ display: "inline-block" }}
@@ -81,8 +73,8 @@ export default function NavbarProductToolbar({ title }: any) {
           onClick={handleOpenUserMenu}
           sx={{ color: anchorElUser ? "#e7a13a" : "#fff" }}
         >
-          {title}{" "}
-          {anchorElUser ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}{" "}
+          {title}
+          {anchorElUser ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}
         </Button>
       </Tooltip>
       <Menu
@@ -199,7 +191,9 @@ export default function NavbarProductToolbar({ title }: any) {
                 ?.map((sc) => {
                   return (
                     <Grid item xs={6} md={6} key={sc.title}>
-                      {sc.title}
+                      <Link href={`/products/${sc?.id}`} color="inherit">
+                        {sc.title}
+                      </Link>
                     </Grid>
                   );
                 })}

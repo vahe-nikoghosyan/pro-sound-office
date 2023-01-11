@@ -1,6 +1,4 @@
-import * as React from "react";
-import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 import ProSound from "../components/Home/ProSound";
 import Service from "../components/Home/Service";
 import Slider from "../components/Home/Slider";
@@ -27,7 +25,7 @@ function Home(props: any) {
 }
 
 export async function getStaticProps() {
-  console.log("home");
+  console.log("home starting");
   return {
     props: {
       home: "home",

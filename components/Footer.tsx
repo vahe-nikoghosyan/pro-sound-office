@@ -1,9 +1,10 @@
-import { Box, Container, Grid, Paper, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 import styles from "../styles/Footer.module.scss";
 import Link from "../utils/Link";
-import CssBaseline from "@mui/material/CssBaseline";
 import * as React from "react";
-import Button from "@mui/material/Button";
 const footerData = [
   {
     title: "services",

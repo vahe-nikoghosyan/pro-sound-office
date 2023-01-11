@@ -1,74 +1,104 @@
-import {Container} from "@mui/material";
+import Container from "@mui/material/Container";
+import { GetServerSideProps } from "next";
 
 export interface ProductCategory {
-    title: string,
-    id?: string,
-    subcategories?: ProductCategory[]
+  title: string;
+  id: string;
+  subcategories?: ProductCategory[];
 }
 
 export interface ProductData {
-    categories: ProductCategory[]
+  categories: ProductCategory[];
 }
 
 export const productData: ProductData = {
-    categories: [
+  categories: [
+    {
+      title: "Funktion one",
+      id: "funktion",
+      subcategories: [
         {
-            title: "Funktion one",
-            id: "funktion",
-            subcategories: [
-                {
-                    title: "All Rangers",
-                },
-                {
-                    title: "Evolution",
-                },
-                {
-                    title: "Compact",
-                },
-
-                {
-                    title: "Resolution",
-                },
-
-                {
-                    title: "Public Address",
-                },
-
-                {
-                    title: "Electronics",
-                },
-                {
-                    title: "Vero",
-                },
-
-                {
-                    title: "Vero VX",
-                },
-
-                {
-                    title: "Bass",
-                },
-
-                {
-                    title: "Dance Stack",
-                },
-                {
-                    title: "Monitor",
-                },
-                {
-                    title: "Other",
-                },
-            ]
+          title: "All Rangers",
+          id: "rangers",
         },
-        {title: "Other brands", id: "other"},
-    ]
+        {
+          title: "Evolution",
+          id: "evolution",
+        },
+        {
+          title: "Compact",
+          id: "compact",
+        },
+
+        {
+          title: "Resolution",
+          id: "resolution",
+        },
+
+        {
+          title: "Public Address",
+          id: "public-address",
+        },
+
+        {
+          title: "Electronics",
+          id: "electronics",
+        },
+        {
+          title: "Vero",
+          id: "vero",
+        },
+
+        {
+          title: "Vero VX",
+          id: "vero-vx",
+        },
+
+        {
+          title: "Bass",
+          id: "bass",
+        },
+
+        {
+          title: "Dance Stack",
+          id: "dance-stack",
+        },
+        {
+          title: "Monitor",
+          id: "monitor",
+        },
+        {
+          title: "Other",
+          id: "other",
+        },
+      ],
+    },
+    { title: "Other brands", id: "other-brands" },
+  ],
+};
+
+export interface ProductProps {
+  id: string;
 }
 export default function Products() {
-    return (
-        <section>
-            <Container>
-                Products
-            </Container>
-        </section>
-    )
+  return (
+    <section>
+      <Container>Products</Container>
+    </section>
+  );
 }
+
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   return {
+//     paths: [],
+//     fallback: false,
+//   };
+// };
+
+export const getStaticProps: GetServerSideProps = async (context) => {
+  // const id = context.query["id"];
+
+  return {
+    props: {},
+  };
+};

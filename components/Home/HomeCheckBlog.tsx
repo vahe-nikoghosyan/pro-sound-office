@@ -1,34 +1,38 @@
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 import styles from "../../styles/HomeCheckBlog.module.scss";
-import { useEffect, useState } from "react";
-import useMediaQuery from "@mui/material/useMediaQuery";
 
 const homeCheckBlogs = [
   {
     title: "Event",
-    imagePath: "/assets/home-blog-1.jpg",
+    imagePath: "/assets/HomeBlog/home-blog-1.jpg",
   },
   {
     title: "Event",
-    imagePath: "/assets/home-blog-2.jpg",
+    imagePath: "/assets/HomeBlog/home-blog-2.jpg",
   },
   {
     title: "Event",
-    imagePath: "/assets/home-blog-3.jpg",
+    imagePath: "/assets/HomeBlog/home-blog-3.jpg",
   },
   {
     title: "Event",
-    imagePath: "/assets/home-blog-4.jpg",
+    imagePath: "/assets/HomeBlog/home-blog-4.jpg",
   },
   {
     title: "Event",
-    imagePath: "/assets/home-blog-7.jpg",
+    imagePath: "/assets/HomeBlog/home-blog-7.jpg",
   },
   {
     title: "Event",
-    imagePath: "/assets/home-blog-6.jpg ",
+    imagePath: "/assets/HomeBlog/home-blog-6.jpg ",
   },
 ];
 

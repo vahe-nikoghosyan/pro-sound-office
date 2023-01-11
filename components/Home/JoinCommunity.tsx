@@ -1,4 +1,6 @@
-import { Box, Container } from "@mui/material";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+
 import styles from "../../styles/HomeBlog.module.scss";
 
 export default function JoinCommunity() {

@@ -1,10 +1,17 @@
-import { Box, Button, Container, Grid, Paper, Typography } from "@mui/material";
+import Link from "../../utils/Link";
 
-import styles from "../../styles/HomeProduct.module.scss";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+
 import { styled } from "@mui/material/styles";
 import Image from "next/image";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import Link from "../../utils/Link";
+
+import styles from "../../styles/HomeProduct.module.scss";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -17,18 +24,21 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const homeProductsData = [
   {
+    id: "p1",
     title: "psm318",
     imagePath: "/assets/home-product-1.png",
     description:
       "PSM318 DJ Monitor delivers outstanding full frequency output, accuracy and immediacy, setting a new benchmark for DJs looking for ultimate stage sound",
   },
   {
+    id: "p2",
     title: "psm318",
     imagePath: "/assets/home-product-2.png",
     description:
       "PSM318 DJ Monitor delivers outstanding full frequency output, accuracy and immediacy, setting a new benchmark for DJs looking for ultimate stage sound",
   },
   {
+    id: "p3",
     title: "psm318",
     imagePath: "/assets/home-product-3.png",
     description:
@@ -69,10 +79,10 @@ export default function Products() {
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
             {homeProductsData.map(
-              ({ title, description, imagePath }, index) => {
+              ({ id, title, description, imagePath }, index) => {
                 const listItem = homeProductsData.length - 1 === index;
                 return (
-                  <Grid item xs={12} sm={4} md={4} key={title}>
+                  <Grid item xs={12} sm={4} md={4} key={id}>
                     <Link href={"/about"}>
                       <Item>
                         <Image
@@ -80,7 +90,7 @@ export default function Products() {
                           alt={title}
                           width={500}
                           height={500}
-                          layout="responsive"
+                          // layout="responsive"
                         />
                         <Typography
                           variant="h5"

@@ -1,7 +1,10 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import styles from "../../styles/HomeBlog.module.scss";
-import { useEffect, useState } from "react";
 
 export default function HomeBlog() {
   const [blogsCount, setBlogsCount] = useState(6);

@@ -1,5 +1,8 @@
-import { Button, Container, Grid, Typography } from "@mui/material";
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
+
 import styles from "../../styles/ProSound.module.scss";
 
 const BtnRoot = styled("div")(({ theme }) => ({
