@@ -90,7 +90,7 @@ export default function Products() {
                           alt={title}
                           width={500}
                           height={500}
-                          // layout="responsive"
+                          layout="responsive"
                         />
                         <Typography
                           variant="h5"

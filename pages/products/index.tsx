@@ -1,5 +1,6 @@
 import Container from "@mui/material/Container";
 import { GetServerSideProps } from "next";
+import ProductsPage from "../../components/Products";
 
 export interface ProductCategory {
   title: string;
@@ -81,11 +82,7 @@ export interface ProductProps {
   id: string;
 }
 export default function Products() {
-  return (
-    <section>
-      <Container>Products</Container>
-    </section>
-  );
+  return <ProductsPage />;
 }
 
 // export const getStaticPaths: GetStaticPaths = async () => {
